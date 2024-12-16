@@ -1,0 +1,64 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<xwikidoc version="1.5" reference="Macros.Expandable.Translations" locale="">
+  <web>Expandable.Translations</web>
+  <name>WebHome</name>
+  <language/>
+  <defaultLanguage>en</defaultLanguage>
+  <translation>0</translation>
+  <creator>xwiki:XWiki.Admin</creator>
+  <parent>Macros.Expandable.WebHome</parent>
+  <author>xwiki:XWiki.Admin</author>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <version>1.1</version>
+  <title>Translations</title>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>plain/1.0</syntaxId>
+  <hidden>true</hidden>
+  <content>
+rendering.macro.expandable.description=Similar to an HTML “&lt;details&gt;” element, this enables more extensive information to be displayed first in short form and the exact details to be displayed only when the mouse is clicked. If several of these Expandable elements are arranged directly on top of each other, they form an accordion component.
+rendering.macro.expandable.parameter.summary.name=Summary
+rendering.macro.expandable.parameter.openInitially.name=Initially open
+rendering.macro.expandable.parameter.forceExclusiveAccordion.name=Force exclusive accordion (it's fine to set this flag only on the first Expandable element of an accordion)
+rendering.macro.expandable.parameter.forceExclusiveAccordion.description="Exclusive Accordion" means, that whenever an Expandable element of the accordion will be opened then all other Expandable elements of the same accordion will be closed.
+rendering.macro.expandable.parameter.cssClass.name=CSS class
+  </content>
+  <object>
+    <name>Macros.Expandable.Translations</name>
+    <number>0</number>
+    <className>XWiki.TranslationDocumentClass</className>
+    <guid>cfb47eaf-1611-4e17-9732-af539f3a503d</guid>
+    <class>
+      <name>XWiki.TranslationDocumentClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <scope>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <freeText>forbidden</freeText>
+        <largeStorage>0</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>scope</name>
+        <number>1</number>
+        <prettyName>Scope</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>GLOBAL|WIKI|USER|ON_DEMAND</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </scope>
+    </class>
+    <property>
+      <scope>WIKI</scope>
+    </property>
+  </object>
+</xwikidoc>

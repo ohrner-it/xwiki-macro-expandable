@@ -1,0 +1,42 @@
+{{velocity}}
+#set($isEditing = $xcontext.action == 'get' || $xcontext.action == 'edit' || $request.outputSyntax == 'annotatedhtml' || $request.outputSyntax == 'annotatedxhtml')
+#if($isEditing)
+  {{container cssClass="xw-expandable xw-expandable_editing"}}
+  {{wikimacroparameter name="summary"/}}
+
+  {{wikimacrocontent/}}
+  {{/container}}
+#else
+  #set($expandableClassNames='xw-expandable')
+  #if($wikimacro.parameters.cssClass)
+    #set($expandableClassNames=$expandableClassNames + ' ' + $wikimacro.parameters.cssClass)
+  #end
+  #if($wikimacro.parameters.openInitially)
+    #set($expandableClassNames=$expandableClassNames + ' xw-expandable xw-expandable_open')
+  #end
+  #set($expandableAttributes='')
+  #if($wikimacro.parameters.forceExclusiveAccordion)
+    #set($expandableAttributes='data-force-exclusive-accordion')
+  #end
+  {{html wiki="true"}}
+    <div class="$expandableClassNames" $expandableAttributes>
+      <a
+        tabindex="0"
+        class="xw-expandable_header"
+        onclick="document.dispatchEvent(new CustomEvent('internal:expandable-toggle', { detail: event }))"
+        onkeypress="document.dispatchEvent(new CustomEvent('internal:expandable-toggle', { detail: event }))">
+
+        <div class="xw-expandable_caret"></div>
+        <div class="xw-expandable_summary">
+          {{wikimacroparameter name="summary"/}}
+        </div>
+      </a>
+      <div class="xw-expandable_content">
+        <div>
+         {{wikimacrocontent/}}
+        </div>
+      </div>
+    </div>
+  {{/html}}
+#end
+{{/velocity}}

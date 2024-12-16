@@ -1,0 +1,91 @@
+.xw-expandable.xw-expandable_editing {
+  padding: 0.75em 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 4px 0;
+}
+
+.xw-expandable:not(.xw-expandable_editing) {
+  @_font-family: @font-family-base;
+  @_font-size: @font-size-base;
+  @_text-color: inherit;
+  @_border-width: 1px;
+  @_border-color: #90909050;
+  @_border-radius: 4px;
+  @_focus-ring-color: @brand-primary;
+  @_focus-ring-border-width: 2px;
+  @_header-padding: 0.6em 1em;
+  @_content-padding: 0.5em 1em;
+
+  border-width: @_border-width;
+  border-color: @_border-color;
+  border-style: solid;
+  border-radius: @_border-radius;
+
+  & > .xw-expandable_header {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    column-gap: 0.5em;
+    padding: @_header-padding;
+    margin: -@_border-width;
+    text-decoration: none;
+    color: @_text-color;
+    cursor: pointer;
+    user-select: none;
+    box-sizing: border-box;
+    border: @_focus-ring-border-width solid transparent;
+
+    &:focus {
+      outline: none;
+      border: @_focus-ring-border-width solid @_focus-ring-color;
+      border-radius: @_border-radius;
+    }
+
+    & > .xw-expandable_summary {
+      flex-grow: 1;
+    }
+
+    & > .xw-expandable_caret {
+      &::after {
+        content: '\276F';
+        font-family: sans-serif;
+        font-size: 90%;
+        margin: 0 0.25em;
+      }
+    }
+  }
+
+  & + .xw-expandable {
+    margin-top: 3px;
+  }
+
+  & > .xw-expandable_content {
+    position: relative; // this is important due to some Blink engine issue
+    outline: none; // this is important due to some Firefox issue
+
+    & > div {
+      padding: @_content-padding;
+    }
+  }
+
+  &.xw-expandable_open {
+    & > .xw-expandable_header > .xw-expandable_caret {
+      transform: rotate(90deg);
+    }
+
+    & > .xw-expandable_content {
+      display: block;
+    }
+  }
+
+  &:not(.xw-expandable_open) {
+    & > .xw-expandable_header > .xw-expandable_caret {
+      transform: rotate(0deg);
+    }
+
+    & > .xw-expandable_content {
+      display: none;
+    }
+  }
+}
