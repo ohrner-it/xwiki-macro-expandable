@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ohrnerit.xwiki</groupId>
     <artifactId>xwiki-macro-expandable</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <name>Expandable</name>
     <packaging>xar</packaging>
     <description>Expandable</description>
@@ -62,6 +62,12 @@
                             <file>Expandable.xml</file>
                             <xpath>/xwikidoc/object[className[text()='XWiki.JavaScriptExtension']]/property/code</xpath>
                             <content>src/main/resources/script/expandable.js</content>
+                        </transformation>
+                        <transformation>
+                            <action>INSERT_TEXT</action>
+                            <file>Expandable.xml</file>
+                            <xpath>/xwikidoc/content</xpath>
+                            <content>src/main/resources/content/content.txt</content>
                         </transformation>
                     </transformations>
                 </configuration>
