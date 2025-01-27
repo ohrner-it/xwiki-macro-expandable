@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ohrnerit.xwiki</groupId>
     <artifactId>xwiki-macro-expandable</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <name>Expandable</name>
     <packaging>xar</packaging>
     <description>Expandable</description>
