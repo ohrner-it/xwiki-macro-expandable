@@ -20,9 +20,10 @@
     </licenses>
     <organization>
         <name>Ohrner IT GmbH</name>
+        <url>https://www.ohrner-it.com</url>
     </organization>
     <url>
-        https://github.com/ohrner-it/xwiki-macro-teaser-card
+        https://github.com/ohrner-it/xwiki-macro-expandable
     </url>
     <properties>
         <!-- Don't check for API backward-compatibility here since there's no Java code. -->
