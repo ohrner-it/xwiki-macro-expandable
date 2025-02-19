@@ -32,3 +32,8 @@ org.xwiki.platform:xwiki-platform-rendering-wikimacro-api</br>
 org.xwiki.platform:xwiki-platform-skin-skinx</br>
 org.xwiki.platform:xwiki-platform-rendering-macro-velocity</br>
 org.xwiki.rendering:xwiki-rendering-macro-html</br>
+
+### License
+GNU General Public License v3.0
+
+&copy; 2025, Ohrner IT GmbH
