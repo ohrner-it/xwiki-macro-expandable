@@ -36,4 +36,4 @@ org.xwiki.rendering:xwiki-rendering-macro-html</br>
 ### License
 GNU General Public License v3.0
 
-&copy; 2025, Ohrner IT GmbH
+&copy; 2025 Ohrner IT GmbH
