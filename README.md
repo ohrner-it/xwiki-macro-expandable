@@ -21,7 +21,7 @@ Please use the XWiki Extension Manager to install the Expandable macro.
 
 ## Build instructions for developers
 
-> mvn clean package package
+`mvn clean package package`
 
 Will build an installable XAR file in directory `target`.<br>
 For unknown reasons, it's better to use argument `package` twice in the maven call above, otherwise a buggy XAR file
