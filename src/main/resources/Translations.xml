@@ -17,11 +17,11 @@
   <syntaxId>plain/1.0</syntaxId>
   <hidden>true</hidden>
   <content>
-rendering.macro.expandable.description=Similar to an HTML “&lt;details&gt;” element, this enables more extensive information to be displayed first in short form and the exact details to be displayed only when the mouse is clicked. If several of these Expandable elements are arranged directly on top of each other, they form an accordion component.
+rendering.macro.expandable.description=Similar to an HTML “&lt;details&gt;” element, this macro enables more extensive information to be displayed first in short form and the exact details to be displayed only when the mouse is clicked. If several of these Expandable elements are arranged directly on top of each other, they form an accordion component.
 rendering.macro.expandable.parameter.summary.name=Summary
-rendering.macro.expandable.parameter.openInitially.name=Initially open
-rendering.macro.expandable.parameter.forceExclusiveAccordion.name=Force exclusive accordion (it's fine to set this flag only on the first Expandable element of an accordion)
-rendering.macro.expandable.parameter.forceExclusiveAccordion.description="Exclusive Accordion" means, that whenever an Expandable element of the accordion will be opened then all other Expandable elements of the same accordion will be closed.
+rendering.macro.expandable.parameter.expandByDefault.name=Expand by default
+rendering.macro.expandable.parameter.forceExclusiveAccordion.name=Force exclusive accordion
+rendering.macro.expandable.parameter.forceExclusiveAccordion.description="Exclusive accordion" means, that whenever an Expandable element of the accordion will be opened then all other Expandable elements of the same accordion will be closed. It's fine to set this flag only on the first Expandable element of an accordion.
 rendering.macro.expandable.parameter.cssClass.name=CSS class
   </content>
   <object>

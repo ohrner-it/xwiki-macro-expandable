@@ -19,9 +19,9 @@
   <content>
 rendering.macro.expandable.description=Ermöglicht es (ähnlich einem HTML "&lt;details&gt;"-Element) für umfangreichere Informationen, diese zuerst in Kurzform anzuzeigen und erst bei Mausklick die genauen Details einzublenden. Wenn mehrere dieser Expandable-Elemente direkt übereinander angeordnet werden, bilden diese zusammen eine Akkordeon-Komponente.
 rendering.macro.expandable.parameter.summary.name=Zusammenfassung
-rendering.macro.expandable.parameter.openInitially.name=Initial geöffnet
-rendering.macro.expandable.parameter.forceExclusiveAccordion.name=Erzwinge exklusives Akkordeon (es genügt, dieses Flag nur beim ersten Expandable-Element eines Akkordeons zu setzen)
-rendering.macro.expandable.parameter.forceExclusiveAccordion.description="Exklusives Akkordeon" bedeutet, dass beim Öffnen eines Expandable-Elements bereits geöffnete andere Expandable-Elemente des selben Akkordeons automatisch geschlossen werden.
+rendering.macro.expandable.parameter.expandByDefault.name=Standardmäßig ausgeklappt
+rendering.macro.expandable.parameter.forceExclusiveAccordion.name=Erzwinge ein exklusives Akkordeon
+rendering.macro.expandable.parameter.forceExclusiveAccordion.description="Exklusives Akkordeon" bedeutet, dass beim Öffnen eines Expandable-Elements bereits geöffnete andere Expandable-Elemente des selben Akkordeons automatisch geschlossen werden. Es genügt, dieses Flag nur beim ersten Expandable-Element eines Akkordeons zu setzen.
 rendering.macro.expandable.parameter.cssClass.name=CSS Klasse
   </content>
   <object>

@@ -11,7 +11,7 @@
   #if($wikimacro.parameters.cssClass)
     #set($expandableClassNames=$expandableClassNames + ' ' + $wikimacro.parameters.cssClass)
   #end
-  #if($wikimacro.parameters.openInitially)
+  #if($wikimacro.parameters.expandByDefault)
     #set($expandableClassNames=$expandableClassNames + ' xw-expandable xw-expandable_open')
   #end
   #set($expandableAttributes='')

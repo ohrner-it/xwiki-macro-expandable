@@ -581,7 +581,7 @@
       <description/>
     </property>
     <property>
-      <mandatory>0</mandatory>
+      <mandatory>1</mandatory>
     </property>
     <property>
       <name>summary</name>
@@ -674,7 +674,7 @@
       <mandatory>0</mandatory>
     </property>
     <property>
-      <name>openInitially</name>
+      <name>expandByDefault</name>
     </property>
     <property>
       <type>java.lang.Boolean</type>
