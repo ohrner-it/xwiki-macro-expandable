@@ -1,5 +1,4 @@
 {{velocity}}
-222
 
 #set($isEditing = $xcontext.action == 'get' || $xcontext.action == 'edit' || $request.outputSyntax == 'annotatedhtml' || $request.outputSyntax == 'annotatedxhtml')
 #if($isEditing)
@@ -13,8 +12,8 @@
   #if($wikimacro.parameters.cssClass)
     #set($expandableClassNames=$expandableClassNames + ' ' + $wikimacro.parameters.cssClass)
   #end
-  #if($wikimacro.parameters.expandByDefault || $xcontext.action == 'exported')
-    #set($expandableClassNames=$expandableClassNames + ' xw-expandable xw-expandable_open')
+  #if($wikimacro.parameters.expandByDefault || $xcontext.action == 'export')
+    #set($expandableClassNames=$expandableClassNames + ' xw-expandable xw-expandable_expanded')
   #end
   #set($expandableAttributes='')
   #if($wikimacro.parameters.forceExclusiveAccordion)

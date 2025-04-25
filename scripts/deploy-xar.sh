@@ -83,7 +83,7 @@ if [ "$formToken" = "" ]; then
   exit 2
 fi
 
-# we use mvnd as it is much faster than mnv
+# Use `mvnd` if available as it is much faster, otherwise use `mvn`.
 callMaven package package # will be called twice due to some strange maven issues
 
 ls ./target/*.xar > /dev/null # will fail if no xar file is available
@@ -96,7 +96,7 @@ echo "Deleting page \"$pageToDeploy\" if available:"
 
 callCurl -X DELETE \
   -H "XWiki-Form-Token: $formToken" \
-  "$restEntryPoint/wikis/xwiki/$pageToDeploy" && RC=$? || RC=$?
+  "$restEntryPoint/wikis/xwiki/$pageToDeploy"
 
 echo
 echo "Installing xar file \"target/$xarFilename\":"
@@ -105,9 +105,10 @@ callCurl \
   --fail-with-body \
   -H "XWiki-Form-Token: $formToken" \
   -F "file=@./target/$xarFilename" \
+  -F "backup=false" \
   -F "history=RESET" \
   "$restEntryPoint/wikis/xwiki"
 
 echo
 echo
-echo "Deployment was successful ($(date "+%Y-%m-%d %H:%M:%S"))."
+echo "Deployment of \"target/$xarFilename\" was successful ($(date "+%Y-%m-%d %H:%M:%S"))."
