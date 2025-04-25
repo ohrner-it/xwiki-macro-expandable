@@ -1,18 +1,18 @@
 {
-  // Animation parameters for opening and closing the expandable element
+  // Animation parameters for expanding and collapsing the expandable element
   const animationDurationMillis = 300;
   const animationEasing = 'ease-in-out';
 
   // CSS class names
   const expandableBaseClass = 'xw-expandable';
-  const expandableOpenClass = 'xw-expandable_open';
+  const expandableExpandedClass = 'xw-expandable_expanded';
   const expandableHeaderClass = 'xw-expandable_header';
   const expandableCaretClass = 'xw-expandable_caret';
   const expandableContentClass = 'xw-expandable_content';
 
   let ignoreEvents = false; // Indicates to ignore click and keypress events while animating
 
-  // Event handler when the opening or closing of the expandable element has been triggered.
+  // Event handler when the expanding or collapsing of the expandable element has been triggered.
   // Argument `toggleEvent` is a `CustomEvent` that contains the causing click or keypress event
   // as "detail" property.
   // It will be dispatched on `document` as event type "internal:expandable-toggle" whenever a
@@ -38,9 +38,9 @@
     ignoreEvents = true;
     const expandableElem = ev.currentTarget.parentNode;
 
-    (expandableElem.classList.contains(expandableOpenClass)
-      ? closeExpandable(expandableElem)
-      : openExpandable(expandableElem)
+    (expandableElem.classList.contains(expandableExpandedClass)
+      ? collapseExpandable(expandableElem)
+      : expandExpandable(expandableElem)
     ).then(() => (ignoreEvents = false));
   }
 
@@ -52,8 +52,8 @@
     return expandableElem.querySelector(`& > .${expandableContentClass}`);
   }
 
-  async function openExpandable(expandableElem) {
-    expandableElem.classList.add(expandableOpenClass);
+  async function expandExpandable(expandableElem) {
+    expandableElem.classList.add(expandableExpandedClass);
     const contentElem = getExpandableContent(expandableElem);
     const caretElem = getExpandableCaret(expandableElem);
 
@@ -67,12 +67,12 @@
       { transform: 'rotate(90deg)' },
     ]);
 
-    closeOtherExpandablesOfAccordionIfRequired(expandableElem);
+    collapseOtherExpandablesOfAccordionIfRequired(expandableElem);
     await Promise.any([animateContent, animateCaret]);
   }
 
-  async function closeExpandable(expandableElem) {
-    if (!expandableElem.classList.contains(expandableOpenClass)) {
+  async function collapseExpandable(expandableElem) {
+    if (!expandableElem.classList.contains(expandableExpandedClass)) {
       return;
     }
 
@@ -90,7 +90,7 @@
     ]);
 
     await Promise.any([animateContent, animateCaret]);
-    expandableElem.classList.remove(expandableOpenClass);
+    expandableElem.classList.remove(expandableExpandedClass);
   }
 
   async function animate(elem, keyframes) {
@@ -136,18 +136,18 @@
     return accordionExpandables;
   }
 
-  function closeOtherExpandablesOfAccordionIfRequired(expandableElem) {
+  function collapseOtherExpandablesOfAccordionIfRequired(expandableElem) {
     const expandablesOfAccordion = getAccordionExpandables(expandableElem);
 
-    const closingOfOtherExpandablesRequired = expandablesOfAccordion.some((elem) =>
+    const collapsingOfOtherExpandablesRequired = expandablesOfAccordion.some((elem) =>
       elem.hasAttribute('data-force-exclusive-accordion'),
     );
 
-    if (!closingOfOtherExpandablesRequired) {
+    if (!collapsingOfOtherExpandablesRequired) {
       return;
     }
 
-    expandablesOfAccordion.filter((it) => it !== expandableElem).forEach(closeExpandable);
+    expandablesOfAccordion.filter((it) => it !== expandableElem).forEach(collapseExpandable);
   }
 
   // Whenever a `click` or `keypress`event is dispatched on the header of an expandable element
