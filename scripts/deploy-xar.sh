@@ -2,14 +2,14 @@
 
 # Script to build the xar deployment artifact and automatically deploy it on the dev server.
 set -e
-echo $*
-if [ "$#" -lt 3 ] || [ "$#" -gt 4 ] || { [ "$#" -eq 4 ] && [ "$1" != "--netrc-file" ]; }; then
+
+if [ "$#" -lt 2 ] || [ "$#" -gt 3 ] || { [ "$#" -eq 3 ] && [ "$1" != "--netrc-file" ]; }; then
   echo "Script will build the XWiki xar file and deploy it on the development server"
   echo
   echo "Usage:"
-  echo "  sh $0 <USERNAME>:<PASSWORD> <REST_ENTRY_POINT> <PAGE_TO_DEPLOY>"
+  echo "  sh $0 <USERNAME>:<PASSWORD> <REST_ENTRY_POINT>"
   echo "  or"
-  echo "  sh $0 --netrc-file <PATH_TO_NETRC_FILE> <REST_ENTRY_POINT> <PAGE_TO_DEPLOY>"
+  echo "  sh $0 --netrc-file <PATH_TO_NETRC_FILE> <REST_ENTRY_POINT>"
   exit 1
 fi
 
@@ -18,18 +18,16 @@ if ! [ -d "./src" ]; then
    exit 2
 fi
 
-if [ "$#" -eq 3 ]; then
+if [ "$#" -eq 2 ]; then
   usingNetrcFile=false
   credentials=$1
   netrcFile=""
   restEntryPoint=$2
-  pageToDeploy=$3
 else
   usingNetrcFile=true
   credentials=""
   netrcFile=$2
   restEntryPoint=$3
-  pageToDeploy=$4
 fi
 
 mvnCommand=$(which mvnd)
@@ -55,16 +53,16 @@ callMaven() {
 
 callCurl() {
   echo
-  echo "------------------------------------------"
-  echo "Calling curl with the following arguments:"
+  echo "--------------------------------------------------"
+  echo "Calling curl with the following custom parameters:"
   echo $*
-  echo "------------------------------------------"
+  echo "--------------------------------------------------"
   echo
 
   if [ "$usingNetrcFile" = "true" ]; then
-    curl -v -netrc-file "$netrcFile" "$@"
+    curl -v --fail-with-body -netrc-file "$netrcFile" "$@"
   else
-    curl -v  -u "$credentials" "$@"
+    curl -v --fail-with-body -u "$credentials" "$@"
   fi
 
   local exitCode=$?
@@ -91,18 +89,11 @@ xarFilename=$(ls ./target/*.xar -t | head -1 | xargs basename)
 
 echo
 echo "Trying to deploy xar file \"target/$xarFilename\" on $restEntryPoint..."
-echo
-echo "Deleting page \"$pageToDeploy\" if available:"
-
-callCurl -X DELETE \
-  -H "XWiki-Form-Token: $formToken" \
-  "$restEntryPoint/wikis/xwiki/$pageToDeploy"
 
 echo
 echo "Installing xar file \"target/$xarFilename\":"
 
 callCurl \
-  --fail-with-body \
   -H "XWiki-Form-Token: $formToken" \
   -F "file=@./target/$xarFilename" \
   -F "backup=false" \
