@@ -26,7 +26,6 @@
         class="xw-expandable_header"
         onclick="document.dispatchEvent(new CustomEvent('internal:expandable-toggle', { detail: event }))"
         onkeypress="document.dispatchEvent(new CustomEvent('internal:expandable-toggle', { detail: event }))">
-
         <div class="xw-expandable_caret"></div>
         <div class="xw-expandable_summary">
           {{wikimacroparameter name="summary"/}}
