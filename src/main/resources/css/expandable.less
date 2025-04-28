@@ -65,6 +65,17 @@
     & > div {
       padding: @_content-padding;
     }
+
+    /* Unfortunatelly, XWiki will add a div element at the begin and a p element at the end, so we hide them with an aweful hack :-( */
+    & > div {
+      & > div.wikimodel-emptyline:first-child {
+        display: none;
+      }
+
+      & > p:last-child:not(:first-child) {
+        display: none;
+      }
+    }
   }
 
   &.xw-expandable_expanded {
