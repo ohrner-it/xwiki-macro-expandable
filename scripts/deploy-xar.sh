@@ -95,7 +95,7 @@ echo "Installing xar file \"target/$xarFilename\":"
 
 callCurl \
   -H "XWiki-Form-Token: $formToken" \
-  -H "Content-type:application/octet-stream" \
+  -H "Content-type: application/octet-stream" \
   -F "file=@./target/$xarFilename" \
   -F "backup=false" \
   -F "history=RESET" \
