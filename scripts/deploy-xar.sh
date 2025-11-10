@@ -29,10 +29,10 @@ else
   restEntryPoint=$3
 fi
 
-mvnCommand=$(which mvnd)
+mvnCommand=$(command -v mvnd)
 
 if [ "$mvnCommand" = "" ]; then
-  mvnCommand=$(which mvn)
+  mvnCommand=$(command -v mvn)
 fi
 
 if [ "$mvnCommand" = "" ]; then
@@ -73,7 +73,7 @@ callCurl() {
 }
 
 pageContent=$(callCurl "$restEntryPoint/../bin/view/Main")
-formToken=$(echo "$pageContent" | grep -oP 'data-xwiki-form-token="\K[^"]+')
+formToken=$(echo "$pageContent" | LC_ALL=C.UTF-8 grep -oP 'data-xwiki-form-token="\K[^"]+')
 
 if [ "$formToken" = "" ]; then
   echo >&2 "Error: Could not determine form token"

@@ -12,7 +12,7 @@
   #if($wikimacro.parameters.cssClass)
     #set($expandableClassNames=$expandableClassNames + ' ' + $wikimacro.parameters.cssClass)
   #end
-  #if($wikimacro.parameters.expandByDefault || $xcontext.action == 'export')
+  #if($wikimacro.parameters.expandByDefault || $services.job.getCurrentJobStatus(['export', 'pdf']))
     #set($expandableClassNames=$expandableClassNames + ' xw-expandable xw-expandable_expanded')
   #end
   #set($expandableAttributes='')

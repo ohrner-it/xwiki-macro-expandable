@@ -1,4 +1,4 @@
-{
+(() => {
   // Animation parameters for expanding and collapsing the expandable element
   const animationDurationMillis = 300;
   const animationEasing = 'ease-in-out';
@@ -156,4 +156,5 @@
   // In this way we prevent the need for a global event handler function that would pollute the
   // global namespace.
   document.addEventListener('internal:expandable-toggle', handleToggleEvent);
-}
+})();
+

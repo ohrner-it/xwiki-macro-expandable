@@ -20,7 +20,7 @@ fi
 sourceDir=https://raw.githubusercontent.com/ohrner-it/xwiki-dev-tools/refs/heads/main/scripts/deployment
 targetDir="./scripts"
 
-for file in "delete-page.sh" "deploy-xar.sh"; do
+for file in "deploy-xar.sh"; do
   echo "Downloading \"${file}\"..."
   tempFile=$(mktemp)
   set +e
