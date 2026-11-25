@@ -31,6 +31,12 @@
       return;
     }
 
+    // The summary text is selectable. A click that finishes selecting text inside the header
+    // shall not toggle the expandable element.
+    if (ev.type === 'click' && isTextSelectedWithin(ev.currentTarget)) {
+      return;
+    }
+
     if (ignoreEvents) {
       return;
     }
@@ -42,6 +48,16 @@
       ? collapseExpandable(expandableElem)
       : expandExpandable(expandableElem)
     ).then(() => (ignoreEvents = false));
+  }
+
+  function isTextSelectedWithin(elem) {
+    const selection = window.getSelection();
+
+    return (
+      !!selection &&
+      !selection.isCollapsed &&
+      (elem.contains(selection.anchorNode) || elem.contains(selection.focusNode))
+    );
   }
 
   function getExpandableCaret(expandableElem) {
