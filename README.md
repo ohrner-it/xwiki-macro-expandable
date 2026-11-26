@@ -15,6 +15,15 @@ If multiple of these Expandable macros are arranged directly on top of each othe
 - Accordions can be non-exclusive (means, each accordion item can be expanded/collapsed individually) or exclusive
   (means, only one accordion item of an exclusive accordion can be expanded at the same time)
 
+## Macro parameters
+
+| Parameter | Display name | Type | Mandatory | Default | Description |
+|---|---|---|---|---|---|
+| `summary` | Summary | Wiki (wiki syntax) | Yes | – | The short text in the clickable header that is always visible. Clicking it, or pressing a key while it has focus, expands or collapses the content. |
+| `expandByDefault` | Expand by default | Boolean | No | `false` | If `true`, the element starts expanded. For PDF/export jobs the element is always expanded, whatever this is set to. |
+| `forceExclusiveAccordion` | Force exclusive accordion | Boolean | No | `false` | Makes stacked Expandables an exclusive accordion: opening one element closes all others in the same accordion. Setting it on the first element of the accordion is enough. |
+| `cssClass` | CSS class | String | No | – | Additional CSS class(es) added to the macro's outer `div`, next to the built-in `xw-expandable` class, for custom styling. |
+
 ## Installation instructions
 
 Please use the XWiki Extension Manager to install the Expandable macro.
